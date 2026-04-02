@@ -9,6 +9,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN echo "0 12 * * * cd /app && python parser.py >> /var/log/parser.log 2>&1" | crontab -
+ENV TZ=Europe/Madrid
+
+RUN echo "0 12 * * * cd /app && /usr/local/bin/python3 parser.py >> /var/log/parser.log 2>&1" | crontab -
 
 CMD ["cron", "-f"]
