@@ -11,6 +11,6 @@ COPY . .
 
 ENV TZ=Europe/Madrid
 
-RUN echo "0 12 * * * cd /app && /usr/local/bin/python3 parser.py >> /var/log/parser.log 2>&1" | crontab -
+RUN echo "0 21 * * * cd /app && /usr/local/bin/python3 parser.py >> /var/log/parser.log 2>&1" | crontab -
 
 CMD ["cron", "-f"]
